@@ -30,7 +30,29 @@ namespace EFCoreAzureCosmos.UnstructuredData
                     PartitionKey = "1"
                 };
 
+                var order2 = new Order
+                {
+                    Id = 2,
+                    ShippingAddress = new StreetAddress { City = "Aalborg", Street = "Øster Uttrupvej 3" },
+                    PartitionKey = "1"
+                };
+
+                var order3 = new Order
+                {
+                    Id = 3,
+                    ShippingAddress = new StreetAddress { City = "Skive", Street = "Kastanievænget 7" },
+                    PartitionKey = "2"
+                };                
+
+                var dis = new Distributor
+                {
+                    Id = 1,
+                    ShippingCenters = new List<StreetAddress> { new StreetAddress { City = "Aalborg", Street = "Vingade 5"}, new StreetAddress { City = "Aalborg", Street = "Hadsundvej 60"} }
+                };
                 context.Add(order);
+                context.Add(order2);
+                context.Add(order3);
+                context.Add(dis);
 
                 await context.SaveChangesAsync();
             }
